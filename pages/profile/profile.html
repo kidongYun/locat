@@ -1,0 +1,103 @@
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
+  <ion-navbar class="toolbar">
+    <ion-title class="title">프로필</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="map()">
+        <img src="http://localhost/locat/image/icon.png">
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="write()">
+        <ion-icon name="ios-create" style="font-size: 24px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #pageContent fullscreen>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="100">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="아래로 당겨서 새로고침" refreshingSpinner="circles"
+      refreshingText="새로고침중...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-grid *ngFor="let profile of profiles" style="padding: 0;">
+
+    <ion-row style="height: 90px;">
+      <ion-col col-3>
+        <img *ngIf="profile.profile" style="border: 1px solid #e2e2e2; width: 70px; height: 70px; border-radius: 40px; margin: 14%;" src="http://localhost/locat/profile/{{ profile.profile }}" (click)=profile()>
+        <img *ngIf="!profile.profile" style="border: 1px solid #e2e2e2; width: 70px; height: 70px; border-radius: 40px; margin: 14%;" src="http://localhost/locat/profile/person.png" (click)=profile()>
+        </ion-col>
+        <ion-col col-8 style="margin-top: 8px;">
+          <ion-row style="margin-right: 5%; margin-left: 12%;">
+            <b>{{ profile.id }}</b>
+          </ion-row>
+          <ion-row style="margin-right: 5%; margin-left: 12%;">
+            <ion-note style="font-size: 12px">
+              충남 대천
+            </ion-note>
+          </ion-row>
+          <ion-row style="margin-top: 5px;">
+            <button ion-button outline (click)="follow()" style="background-color: #fff; border: 0; width: 40px; height: 30px; margin-right: 5%; margin-left: 10%;" round>
+              <span style="font-size: 13px; color: #000;">{{ profile.follow }}<br>팔로우</span>
+            </button>
+            <button ion-button outline (click)="follower()" style="background-color: #fff; border: 0; width: 40px; height: 30px; margin-right: 5%;" round>
+              <span style="font-size: 13px; color: #000;">{{ profile.follower }}<br>팔로워</span>
+            </button>
+            <button ion-button outline (click)="following()" style="width: 40px; height: 30px; border-radius: 10px; border: 0; float: right;" icon-only>
+              <ion-icon style="font-size: 22px;" name="md-person-add"></ion-icon>
+            </button>
+          </ion-row>
+        </ion-col>
+      <ion-col col-1>
+        <button ion-button (click)="setting()" style="width: 15px; height: 15px; background-color: #fff; float: right">
+      <ion-icon ios="ios-settings" md="md-settings" style="color: #949494;"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+      </ion-col>
+      <ion-col col-8>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+    <div>
+      <ion-segment class="segment" [(ngModel)]="onsegment" style="height: 50px; border-top: 1px solid #bdbdbd; border-bottom: 1px solid #bdbdbd;">
+        <ion-segment-button value="map" style="height: 50px; border: 0; border-top: 1px solid #bdbdbd; border-bottom: 1px solid #bdbdbd; background-color: none;">
+          <ion-icon name="ios-map-outline" style="margin-top: 10px;"></ion-icon>
+        </ion-segment-button>
+
+        <ion-segment-button value="feed" style="height: 50px; border: 0; border-top: 1px solid #bdbdbd; border-bottom: 1px solid #bdbdbd; border-radius: 0; background-color: none;">
+          <ion-icon name="ios-apps-outline" style="margin-top: 10px;"></ion-icon>
+        </ion-segment-button>
+
+        <ion-segment-button value="list" style="height: 50px; border: 0; border-top: 1px solid #bdbdbd; border-bottom: 1px solid #bdbdbd; border-radius: 0; background-color: none;">
+        <ion-icon name="ios-list-box-outline" style="margin-top: 10px;"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div [ngSwitch]="onsegment" style="height: 100%;">
+
+      <ion-grid *ngSwitchCase="'map'" #map id="map">
+      </ion-grid>
+
+      <ion-grid *ngSwitchCase="'feed'" style="padding: 0;">
+        <ion-row>
+          <ion-col *ngFor="let profile_feed of profile_feeds" col-4 style="padding: 0; border: 1px solid #fff;">
+              <img *ngIf="profile_feed.image" src="http://localhost/locat/data/{{ profile_feed.image }}" (click)="feedView(profile_feed.no)">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+     <ion-list *ngSwitchCase="'list'" inset>
+        <button ion-item *ngFor="let profile_feed of profile_feeds" (click)="feedView(profile_feed.no)">
+            {{ profile_feed.content }}
+        </button>
+     </ion-list>
+    </div>
+  </ion-content>

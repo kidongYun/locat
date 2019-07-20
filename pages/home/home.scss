@@ -1,0 +1,15 @@
+page-home {
+  .toolbar-title-ios { font-size: 18px; font-family: "OCR A Std"; color: #ffffff; text-align: left; }
+  .toolbar-title-md { font-size: 18px; font-family: "OCR A Std"; color: #ffffff; text-align: left; }
+  .card-ios { margin: 0; width: 100%; }
+  .card-md { margin: 0; width: 100%; }
+  .label-ios { margin: 0; }
+  .label-md { margin: 0; }
+  .card-content-ios { padding: 5px 0px 0px 10px; }
+  .card-content-md { padding: 5px 0px 0px 10px; }
+  .button[icon-only] { background-color: #fff; }
+  .item-ios.item-block .item-inner { padding-right: 2px; }
+  .item-md.item-block .item-inner { padding-right: 2px; }
+  .scroll-content{ padding: 0px !important; border: 0px !important; margin-top: 55px !important; }
+  .refresher-refreshing { margin-top: 35px !important; }
+}

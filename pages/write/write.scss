@@ -1,0 +1,23 @@
+page-write {
+  .scroll-content { padding: 0; }
+  .text-input-ios { margin: 0; height: 100%; }
+  .box { position: relative; width: 100%; }
+  .box:before { content: ""; display: block; padding-top: 100%; }
+  .toolbar-ios ion-title { padding: 0 90px 0px; }
+  #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+}
+.toastCss button { background: none; }
+.toastCss button span { color: #49c5ff; font-size: 14px; }

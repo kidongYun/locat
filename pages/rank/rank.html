@@ -1,0 +1,131 @@
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
+  <ion-navbar class="toolbar">
+    <ion-title class="title" style="text-align: left;">랭크</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="map()">
+        <img src="http://localhost/locat/image/icon.png">
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="write()">
+        <ion-icon name="ios-create" style="font-size: 24px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #pageContent fullscreen>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+    <ion-card>
+      <ion-slides pager>
+        <ion-slide>
+            <ion-list inset>
+                <button ion-item  (click)="itemSelected(item)">
+                    1.공대
+                </button>
+                <button ion-item  (click)="itemSelected(item)">
+                    2.프라임관
+                </button>
+                <button ion-item  (click)="itemSelected(item)">
+                    3.학생회관
+                </button>
+            </ion-list>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-list inset>
+              <button ion-item  (click)="itemSelected(item)">
+                4.인문대
+              </button>
+              <button ion-item  (click)="itemSelected(item)">
+                5.새천년관
+              </button>
+              <button ion-item  (click)="itemSelected(item)">
+                6.중앙도서관
+              </button>
+            </ion-list>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-list inset>
+              <button ion-item  (click)="itemSelected(item)">
+                7.학생지원관
+              </button>
+              <button ion-item  (click)="itemSelected(item)">
+                8.우리집은
+              </button>
+              <button ion-item  (click)="itemSelected(item)">
+                9.늘푸른집원룸
+              </button>
+              <button ion-item  (click)="itemSelected(item)">
+                10.101호
+              </button>
+            </ion-list>
+          </ion-slide>
+        </ion-slides>
+    </ion-card>
+
+    <ion-card>
+      <ion-slides pager>
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-auto>
+                <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485" >
+              </ion-col>
+
+              <ion-col col-auto>
+                <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485">
+              </ion-col>
+
+              <ion-col col-auto>
+                <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485">
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+                <ion-col col-auto>
+                  <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485" >
+                </ion-col>
+
+                <ion-col col-auto>
+                  <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485">
+                </ion-col>
+
+                <ion-col col-auto>
+                  <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485">
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-auto>
+                  <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485" >
+                </ion-col>
+
+                <ion-col col-auto>
+                  <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485">
+                </ion-col>
+
+                <ion-col col-auto>
+                  <img class="img" src="http://www.inven.co.kr/mobile/board/powerbbs.php?come_idx=2097&my=chu&p=1&l=897485">
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+</ion-content>

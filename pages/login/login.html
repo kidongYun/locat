@@ -1,0 +1,32 @@
+<ion-content style="background-color: #400090;">
+  <ion-grid>
+    <div style="margin: auto; margin-top: 20%;">
+      <ion-row>
+        <img src="http://localhost/locat/image/logo.png" style="margin-left: 3px; width: 80px; height: 80px;">
+      </ion-row>
+      <ion-row style="margin: auto; margin-top: 10%;">
+        <span style="font-size: 22px; font-family: 'OCR A Std'; color: #ffffff;">LOCAT</span>
+      </ion-row>
+    </div>
+    <ion-row style="margin-top: 10%;">
+      <ion-card style="padding: 5%; padding-top: 0;">
+        <ion-item style="border-bottom: 1px solid #949494;">
+          <ion-label style="color: #949494; font-size: 13px;" floating>아이디</ion-label>
+          <ion-input type="text" style="color: #000;" name="id" #id></ion-input>
+        </ion-item>
+        <ion-item style="border-bottom: 1px solid #949494;">
+          <ion-label style="color: #949494; font-size: 13px;"floating>비밀번호</ion-label>
+          <ion-input type="password" style="color: #000;" name="pw" #pw></ion-input>
+        </ion-item>
+        <ion-row style="padding-top: 10%;">
+          <button ion-button block style="font-size: 14px;" (click)="login()">로그인</button>
+          <button ion-button block style="font-size: 14px;" (click)="register()">회원가입</button>
+        </ion-row>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <footer style="text-align: center;">
+    <span style="color: #949494; font-size: 13px;">© 2019. LOCAT</span>
+  </footer>
+</ion-content>

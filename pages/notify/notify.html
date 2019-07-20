@@ -1,0 +1,54 @@
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
+  <ion-navbar class="toolbar">
+    <ion-title class="title">알림</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="map()">
+        <img src="http://localhost/locat/image/icon.png">
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="write()">
+        <ion-icon name="ios-create" style="font-size: 24px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content #pageContent fullscreen>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="100">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="아래로 당겨서 새로고침" refreshingSpinner="circles"
+      refreshingText="새로고침중...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+  <ion-item-sliding *ngFor="let notify of notifys">
+    <ion-item style="height: 70px;">
+      <ion-avatar item-start>
+        <img *ngIf="notify.profile" style="width: 40px; height: 40px; margin-left: 10px; border: 1px solid #e2e2e2;" src="http://localhost/locat/profile/{{ notify.profile }}">
+        <img *ngIf="!notify.profile" style="width: 40px; height: 40px; margin-left: 10px; border: 1px solid #e2e2e2;" src="http://localhost/locat/profile/person.png">
+      </ion-avatar>
+      <h3 *ngIf="notify.type == 'feed'" style="margin-left: 10px;"><b>{{ notify.sender_id }}</b>님이 피드를 올렸습니다.</h3>
+      <h3 *ngIf="notify.type == 'like'" style="margin-left: 10px;"><b>{{ notify.sender_id }}</b>님이 좋아요를 눌렀습니다.</h3>
+      <h3 *ngIf="notify.type == 'comment'" style="margin-left: 10px;"><b>{{ notify.sender_id }}</b>님이 댓글을 남겼습니다.</h3>
+      <ion-note><h4 style="margin-left: 10px;">{{ notify.regdate }}</h4></ion-note>
+    </ion-item>
+
+    <ion-item-options side="right">
+      <button ion-button color="danger" style="width: 70px;">
+        <ion-icon name="ios-remove-circle-outline"></ion-icon>삭제
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content
+   loadingSpinner="bubbles"
+   loadingText="더보기...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>

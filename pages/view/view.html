@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ view.id }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let view of views" style="border-top: 1px solid #e2e2e2;">
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-left: 10px;">
+          <ion-avatar item-left>
+            <img *ngIf="view.profile" style="width: 40px; height: 40px; border: 1px solid #e2e2e2;" src="http://localhost/locat/profile/{{ view.profile }}">
+            <img *ngIf="!view.profile" style="width: 40px; height: 40px; border: 1px solid #e2e2e2;" src="http://localhost/locat/profile/person.png">
+          </ion-avatar>
+          <h2 style="font-weight: bold">{{ view.id }}</h2>
+          <p>{{ view.location }}</p>
+          <button ion-button item-right style="width: 30px; height: 30px; border-radius: 15px; background-color: #400090;" icon-only (click)=null>
+            <ion-icon style="font-size: 18px;" name="md-pin"></ion-icon>
+          </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <img *ngIf="view.image" src="http://localhost/locat/data/{{ view.image }}">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <p style="color: #000; padding-top: 10px;">{{ view.content }}</p>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>
+          </ion-col>
+          <ion-col col-2>
+            <button class="like-btn" ion-button icon-only style="width: 30px; height: 30px; float: right;" (click)="like(view.id)">
+              <ion-icon [name]="like_btn.icon_name" color="{{ like_btn.color }}" style="font-size: 30px;"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-3>
+            <button ion-button icon-only style="height: 30px; float: right;" (click)=comment()>
+              <ion-icon name="ios-chatbubbles" style="font-size: 13px; color: #400090;"><span style="font-size: 13px; color: #000;"> {{ view.comment }} 댓글</span></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-3>
+            <button ion-button icon-only style="height: 30px; float: right;" (click)=null>
+              <ion-icon name="ios-heart" style="font-size: 13px; color: #400090;"><span style="font-size: 13px; color: #000;"> {{ view.likes }} 좋아요</span></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col style="margin-top: 10px;">
+            <ion-note style="font-size: 12px;  float: left;">{{ view.regdate }}</ion-note>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-only style="height: 30px; float: right;" (click)=null>
+              <ion-icon name="ios-more" style="font-size: 20px; color: #949494;"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

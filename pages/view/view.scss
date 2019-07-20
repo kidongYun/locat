@@ -1,0 +1,12 @@
+page-view {
+  .card-ios { margin: 0; width: 100%; }
+  .card-md { margin: 0; width: 100%; }
+  .label-ios { margin: 0; }
+  .label-md { margin: 0; }
+  .card-content-ios { padding: 5px 10px 10px 15px; }
+  .card-content-md { padding: 5px 10px 10px 15px; }
+  .button[icon-only] { background-color: #fff; }
+  .item-ios.item-block .item-inner { padding-right: 2px; }
+  .item-md.item-block .item-inner { padding-right: 2px; }
+  .toolbar-ios ion-title { padding: 0 90px 0px; }
+}

@@ -1,0 +1,88 @@
+<ion-header [scrollHide]="headerScrollConfig" [scrollContent]="pageContent">
+  <ion-navbar class="toolbar">
+    <ion-title class="title">LOCAT</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="map()">
+        <img src="http://localhost/locat/image/icon.png">
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="write()">
+        <ion-icon name="ios-create" style="font-size: 24px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #pageContent fullscreen>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="100">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="아래로 당겨서 새로고침" refreshingSpinner="circles"
+      refreshingText="새로고침중...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+    <ion-card *ngFor="let home_feed of home_feeds" style="border-top: 1px solid #e2e2e2;">
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-left: 10px;">
+            <ion-avatar item-left>
+              <img *ngIf="home_feed.profile" style="width: 40px; height: 40px; border: 1px solid #e2e2e2;" src="http://localhost/locat/profile/{{ home_feed.profile }}">
+              <img *ngIf="!home_feed.profile" style="width: 40px; height: 40px; border: 1px solid #e2e2e2;" src="http://localhost/locat/profile/person.png">
+            </ion-avatar>
+            <h2 style="font-weight: bold">{{ home_feed.id }}</h2>
+            <p>{{ home_feed.location }}</p>
+            <button ion-button item-right style="width: 30px; height: 30px; border-radius: 15px; background-color: #400090;" icon-only (click)=null>
+              <ion-icon style="font-size: 18px;" name="md-pin"></ion-icon>
+            </button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <img *ngIf="home_feed.image" src="http://localhost/locat/data/{{ home_feed.image }}">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <p style="color: #000; padding-top: 10px;">{{ home_feed.content }}</p>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+            </ion-col>
+            <ion-col col-2>
+              <button class="like-btn" ion-button icon-only style="width: 30px; height: 30px; float: right;" (click)="like(home_feed.no, home_feed.id)">
+                <ion-icon [name]="like_btn.icon_name" color="{{ like_btn.color }}" style="font-size: 30px;"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-3>
+              <button ion-button icon-only style="height: 30px; float: right;" (click)=comment()>
+                <ion-icon name="ios-chatbubbles" style="font-size: 13px; color: #400090;"><span style="font-size: 13px; color: #000;"> {{ home_feed.comment }} 댓글</span></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-3>
+              <button ion-button icon-only style="height: 30px; float: right;" (click)=null>
+                <ion-icon name="ios-heart" style="font-size: 13px; color: #400090;"><span style="font-size: 13px; color: #000;"> {{ home_feed.likes }} 좋아요</span></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col style="margin-top: 10px;">
+              <ion-note style="font-size: 12px;  float: left;">{{ home_feed.regdate }}</ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-only style="height: 30px; float: right;" (click)=null>
+                <ion-icon name="ios-more" style="font-size: 20px; color: #949494;"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+      <ion-infinite-scroll-content
+       loadingSpinner="bubbles"
+       loadingText="더보기...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

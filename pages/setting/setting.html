@@ -1,0 +1,74 @@
+<!--
+  Generated template for the SettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>설정</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-item-group>
+    <ion-item-divider class="bold" style="background-color: #400090; color: #fff;">사용자 설정</ion-item-divider>
+    <ion-item>
+      <span>프로필 수정</span>
+    </ion-item>
+    <ion-item>
+      <span>비밀번호 변경</span>
+    </ion-item>
+    <ion-item>
+      <span>공개 범위</span>
+    </ion-item>
+    <ion-item>
+      <span>차단</span>
+    </ion-item>
+    <ion-item>
+      <ion-label>푸시 알림</ion-label>
+      <ion-toggle checked="true"></ion-toggle>
+    </ion-item>
+  </ion-item-group>
+  <!-- App settings-->
+  <ion-item-group>
+    <ion-item-divider class="bold" style="background-color: #400090; color: #fff;">앱 설정</ion-item-divider>
+    <ion-item>
+      <ion-label>언어</ion-label>
+      <ion-select [(ngModel)]="language" cancelText="Cancel" okText="OK">
+        <ion-option value="ko-KR" selected="true">한국어</ion-option>
+        <ion-option value="en-US">English (US)</ion-option>
+        <ion-option value="en-GB">English (UK)</ion-option>
+        <ion-option value="en-CA">English (CA)</ion-option>
+        <ion-option value="en-AU">English (AU)</ion-option>
+        <ion-option value="en-IN">English (IN)</ion-option>
+        <ion-option value="pt-BR">Portuguese (BR)</ion-option>
+        <ion-option value="pt-PT">Portuguese (PT)</ion-option>
+        <ion-option value="es-ES">Spanish (ES)</ion-option>
+        <ion-option value="es-AR">Spanish (AR)</ion-option>
+        <ion-option value="es-CO">Spanish (CO)</ion-option>
+        <ion-option value="es-CL">Spanish (CL)</ion-option>
+        <ion-option value="es-MX">Spanish (MX)</ion-option>
+        <ion-option value="zh-CN">Chinese (CN)</ion-option>
+        <ion-option value="zh-TW">Chinese (TW)</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>화폐</ion-label>
+      <ion-select [(ngModel)]="currency" cancelText="Cancel" okText="OK">
+        <ion-option value="WON" selected="true">원</ion-option>
+        <ion-option value="USD">U.S Dollar (US$)</ion-option>
+        <ion-option value="EUR">Euro (€)</ion-option>
+        <ion-option value="GBP">Pound (£)</ion-option>
+        <ion-option value="BRL">Brazilian Real (R$)</ion-option>
+        <ion-option value="CNY">Chinese Yuan</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-item-group>
+
+  <!--sign out button-->
+  <button ion-button block (click)="logout()">로그아웃</button>
+</ion-content>
